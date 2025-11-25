@@ -1,5 +1,5 @@
 "use client";
-
+import Link from "next/link";
 const ProfileMenu = () => {
 	const signedIn = false;
 	const user = "user69";
@@ -22,7 +22,11 @@ const ProfileMenu = () => {
 					tabIndex={-1}
 					className="menu menu-sm dropdown-content bg-base-200 rounded-box z-1 mt-3 w-52 p-2 shadow">
 					<li className="btn btn-xs btn-primary m-1">Sign-in</li>
-					<li className="btn btn-xs btn-outline btn-error m-1">sign-up</li>
+					<Link
+						href={"/auth/sign-up"}
+						className="btn btn-xs btn-outline btn-error m-1">
+						sign-up
+					</Link>
 				</ul>
 			)}
 		</div>
