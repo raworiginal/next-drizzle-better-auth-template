@@ -11,7 +11,6 @@ const auth = betterAuth({
 	emailAndPassword: {
 		enabled: true,
 	},
-	experimental: { joins: true },
 });
 
 export { auth };
