@@ -1,17 +1,18 @@
-import Dropdown from "./Dropdown";
-import ProfileMenu from "./ProfileMenu";
+import { IoMenu } from "react-icons/io5";
+import Link from "next/link";
+import UserMenu from "./UserMenu";
 const NavBar = () => {
 	return (
-		<nav className="navbar mx-auto bg-base-100 shadow-sm">
+		<nav className="navbar">
 			<section className="navbar-start">
-				<Dropdown />
+				<button className="btn btn-ghost">
+					<IoMenu />
+				</button>
+				<Link className="btn btn-ghost" href="/">
+					CRUD
+				</Link>
 			</section>
-			<section className="navbar-center">
-				<div className="btn btn-ghost text-xl">CRUD</div>
-			</section>
-			<section className="navbar-end">
-				<ProfileMenu />
-			</section>
+			<UserMenu />
 		</nav>
 	);
 };
