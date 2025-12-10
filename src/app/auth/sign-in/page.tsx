@@ -1,12 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { signIn } from "@/lib/auth-client";
-
+import { signIn } from "@/actions/userActions";
 export default function SignIn() {
-	const router = useRouter();
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [error, setError] = useState("");
@@ -17,21 +14,12 @@ export default function SignIn() {
 		setError("");
 		setLoading(true);
 
-		try {
-			const response = await signIn.email({
-				email,
-				password,
-			});
-
-			if (response.error) {
-				setError(response.error.message || "Sign in failed");
-			} else {
-				router.push("/dashboard");
-			}
-		} catch (err) {
-			console.error(err.message);
-			setError("An unexpected error occurred");
-		} finally {
+		const response = await signIn({
+			email,
+			password,
+		});
+		if (response && !response.success) {
+			setError(response.message);
 			setLoading(false);
 		}
 	};

@@ -1,14 +1,17 @@
-import { IoMenu } from "react-icons/io5";
+import CrudMenu from "./CrudMenu";
 import Link from "next/link";
 import UserMenu from "./UserMenu";
-const NavBar = () => {
+import { auth } from "@/lib/auth";
+import { headers } from "next/headers";
+const NavBar = async () => {
+	const session = await auth.api.getSession({
+		headers: await headers(),
+	});
 	return (
 		<nav className="navbar">
 			<section className="navbar-start">
-				<button className="btn btn-ghost">
-					<IoMenu />
-				</button>
-				<Link className="btn btn-ghost" href="/">
+				<CrudMenu />
+				<Link className="btn btn-ghost" href={session ? "/dashboard" : "/"}>
 					CRUD
 				</Link>
 			</section>

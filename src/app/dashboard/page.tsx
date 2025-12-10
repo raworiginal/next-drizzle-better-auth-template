@@ -10,7 +10,7 @@ const Dashboard = async () => {
 	}
 
 	return (
-		<main className="max-w-6xl w-full mx-auto p-4 mt-16">
+		<main className="max-w-6xl h-screen w-full mx-auto p-4 mt-16">
 			<div className="bg-base-100 rounded-lg shadow-lg p-8 text-center">
 				<h2 className="text-3xl font-bold mb-4">
 					Welcome, {session.user.name}!
